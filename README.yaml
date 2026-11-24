@@ -5,23 +5,14 @@ name: terraform-aws-lambda-function
 license: "APACHE2"
 
 # Canonical GitHub repo
-github_repo: cloudposse/terraform-aws-lambda-function
+github_repo: raringgroup/terraform-aws-lambda-function
 
 badges:
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-lambda-function.svg"
-    url: "https://github.com/cloudposse/terraform-aws-lambda-function/releases/latest"
-  - name: "Slack Community"
-    image: "https://slack.cloudposse.com/badge.svg"
-    url: "https://slack.cloudposse.com"
-  - name: "Discourse Forum"
-    image: "https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg"
-    url: "https://ask.sweetops.com/"
+    image: "https://img.shields.io/github/release/raringgroup/terraform-aws-lambda-function.svg"
+    url: "https://github.com/raringgroup/terraform-aws-lambda-function/releases/latest"
 
 references:
-  - name: "Cloud Posse Documentation"
-    url: "https://docs.cloudposse.com"
-    description: "The Cloud Posse Developer Hub (documentation)"
   - name: "Terraform Standard Module Structure"
     description:
       "HashiCorp's standard module structure is a file and directory layout we recommend for reusable modules
@@ -39,27 +30,26 @@ references:
     url: "https://www.terraform.io/docs/language/settings/index.html#specifying-a-required-terraform-version"
 
 related:
-  - name: "terraform-null-label"
+  - name: "terraform-null-context"
     description:
-      "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-label to
+      "Terraform module designed to generate consistent names and tags for resources. Use terraform-null-context to
       implement a strict naming convention."
-    url: "https://github.com/cloudposse/terraform-null-label"
+    url: "https://github.com/raringgroup/terraform-null-context"
 
 description: |-
-  This module deploys an AWS Lambda function from a zip file or from a docker image. Additionally, it creates an IAM 
-  role for the Lambda function, which optionally attaches policies to allow for Cloudwatch Logs, Cloudwatch Insights, 
-  VPC Access and X-Ray tracing.
-    # Example usage
+  Deploys an AWS Lambda function from a zip file or a docker image, with an IAM role that can optionally attach
+  policies for CloudWatch Logs, CloudWatch Insights, VPC access and X-Ray tracing.
 
 # How to use this module. Should be an easy example to copy and paste.
 usage: |-
-  For a complete example, see [examples/complete](examples/complete).
-  For automated tests of the complete example using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest)
-  (which tests and deploys the example on AWS), see [test](test).
+  Naming and tagging come from [`terraform-null-context`](https://github.com/raringgroup/terraform-null-context). Add
+  `_context.tf` to the calling configuration and pass `context = module.context.self`.
+
   ```hcl
   module "lambda" {
-    source  = "cloudposse/lambda-function/aws"
-    version = "xxxx"
+    source = "git::https://github.com/raringgroup/terraform-aws-lambda-function.git?ref=v0.1.0"
+
+    context = module.context.self
 
     filename      = "lambda.zip"
     function_name = "my-function"
@@ -68,9 +58,13 @@ usage: |-
   }
   ```
 
+  See [`examples/`](examples/) for complete, runnable configurations. Automated tests of the complete example use
+  [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest)
+  (which test and deploy the example on AWS); see [test](test).
+
 examples: |-
-  Here is an example of using this module:
-  - [`examples/complete`](https://github.com/cloudposse/terraform-aws-lambda-function/) - complete example of using this module
+  - [`examples/complete`](examples/complete) - complete example of using this module with a zip file
+  - [`examples/docker-image`](examples/docker-image) - example of deploying from a docker image
 
 # Other files to include in this README from the project folder
 include:
