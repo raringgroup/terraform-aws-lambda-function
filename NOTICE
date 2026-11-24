@@ -4,6 +4,9 @@ Copyright 2026 Raring Group LLC
 This product includes software developed by Raring Group LLC (https://github.com/raringgroup).
 
 Portions of this software are derived from terraform-aws-lambda-function (https://github.com/cloudposse/terraform-aws-lambda-function),
-Copyright 2020-2022 Cloud Posse, LLC, licensed under the Apache License, Version 2.0.
-The file _context.tf (and examples/*/_context.tf) is derived from terraform-null-label (https://github.com/cloudposse/terraform-null-label), Copyright 2020 Cloud Posse, LLC.
-Modifications by Raring Group LLC: re-sourced the context module from the Cloud Posse label module to the Raring Group context module (terraform-null-context); copyright and license headers updated.
+Copyright 2021-2022 Cloud Posse, LLC, licensed under the Apache License, Version 2.0.
+The file _context.tf (and examples/*/_context.tf) is derived from terraform-null-label (https://github.com/cloudposse/terraform-null-label), Copyright 2017-2020 Cloud Posse, LLC.
+Modifications by Raring Group LLC (relative to terraform-aws-lambda-function 0.1.0):
+- Replaced the Cloud Posse null-label context with the Raring Group context module (terraform-null-context).
+- Replaced the cloudposse/cloudwatch-logs/aws module with a native aws_cloudwatch_log_group resource; rewrote iam-role.tf; added _data.tf.
+- Added the role_name, lambda_role_source_policy_documents and file_system_config variables, plus function_name, role_arn and role_name outputs.
