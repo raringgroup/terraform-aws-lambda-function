@@ -40,7 +40,7 @@ resource "time_sleep" "wait_15_seconds" {
   create_duration = "15s"
 }
 
-# Cloud Posse does NOT recommend building and pushing images to ECR via Terraform code. This is a job for your CI/CD
+# Building and pushing images to ECR via Terraform code is NOT recommended. This is a job for your CI/CD
 # pipeline. It is only done here for convenience and so that the example can be run locally.
 data "aws_region" "this" { count = module.context.enabled ? 1 : 0 }
 data "aws_caller_identity" "this" { count = module.context.enabled ? 1 : 0 }
