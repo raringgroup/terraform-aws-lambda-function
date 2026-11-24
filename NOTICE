@@ -1,0 +1,9 @@
+terraform-aws-lambda-function
+Copyright 2026 Raring Group LLC
+
+This product includes software developed by Raring Group LLC (https://github.com/raringgroup).
+
+Portions of this software are derived from terraform-aws-lambda-function (https://github.com/cloudposse/terraform-aws-lambda-function),
+Copyright 2020-2022 Cloud Posse, LLC, licensed under the Apache License, Version 2.0.
+The file _context.tf (and examples/*/_context.tf) is derived from terraform-null-label (https://github.com/cloudposse/terraform-null-label), Copyright 2020 Cloud Posse, LLC.
+Modifications by Raring Group LLC: re-sourced the context module from the Cloud Posse label module to the Raring Group context module (terraform-null-context); copyright and license headers updated.
