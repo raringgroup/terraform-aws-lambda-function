@@ -1,6 +1,5 @@
 module "label" {
-  source     = "cloudposse/label/null"
-  version    = "0.25.0"
+  source     = "git::https://github.com/raringgroup/terraform-null-context.git?ref=v0.1.0"
   attributes = [var.function_name]
 
   context = module.context.self
